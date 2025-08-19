@@ -1,0 +1,54 @@
+# -------------------------
+# Visual Studio 관련
+# -------------------------
+.vs/
+*.vcxproj.user
+*.suo
+*.user
+*.ncb
+*.opensdf
+*.sdf
+*.cache
+*.pdb
+*.ipch
+*.obj
+*.idb
+*.log
+*.ilk
+*.iobj
+*.tlog
+
+# -------------------------
+# 빌드 결과물
+# -------------------------
+x64/Debug/
+x64/Release/
+Debug/
+Release/
+*.exe
+*.dll
+*.lib
+
+# -------------------------
+# CMake 관련
+# -------------------------
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+build/
+CMakeScripts/
+Testing/
+CTestTestfile.cmake
+
+# -------------------------
+# 기타
+# -------------------------
+*.user
+*.opensdf
+*.suo
+*.ipch
+*.sdf
+*.log
+*.vspscc
+*.vssscc

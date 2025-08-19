@@ -1,14 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\csz00\\source\\repos\\Logger\\",
+  "WorkspaceRootPath": "C:\\Users\\csz00\\Project\\Logger\\Logger\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B91ECD1F-2A55-4E9F-9723-C460DD7D6D8F}|Logger\\Logger.vcxproj|C:\\Users\\csz00\\source\\repos\\Logger\\Logger\\Logger.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B91ECD1F-2A55-4E9F-9723-C460DD7D6D8F}|Logger\\Logger.vcxproj|solutionrelative:Logger\\Logger.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{418754B7-CDDC-4602-AA0A-73B5440603B9}|TestLogger\\TestLogger.vcxproj|C:\\Users\\csz00\\Project\\Logger\\Logger\\TestLogger\\Test.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{418754B7-CDDC-4602-AA0A-73B5440603B9}|TestLogger\\TestLogger.vcxproj|solutionrelative:TestLogger\\Test.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B91ECD1F-2A55-4E9F-9723-C460DD7D6D8F}|Logger\\Logger.vcxproj|C:\\Users\\csz00\\source\\repos\\Logger\\Logger\\dllmain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B91ECD1F-2A55-4E9F-9723-C460DD7D6D8F}|Logger\\Logger.vcxproj|solutionrelative:Logger\\dllmain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{1FB88202-7399-4BBE-8CBD-7167EEC97D3C}|Logger\\Logger.vcxproj|C:\\Users\\csz00\\Project\\Logger\\Logger\\Logger\\Logger.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{1FB88202-7399-4BBE-8CBD-7167EEC97D3C}|Logger\\Logger.vcxproj|solutionrelative:Logger\\Logger.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FB88202-7399-4BBE-8CBD-7167EEC97D3C}|Logger\\Logger.vcxproj|C:\\Users\\csz00\\Project\\Logger\\Logger\\Logger\\Logger.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{1FB88202-7399-4BBE-8CBD-7167EEC97D3C}|Logger\\Logger.vcxproj|solutionrelative:Logger\\Logger.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,37 +22,46 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "dllmain.cpp",
-              "DocumentMoniker": "C:\\Users\\csz00\\source\\repos\\Logger\\Logger\\dllmain.cpp",
-              "RelativeDocumentMoniker": "Logger\\dllmain.cpp",
-              "ToolTip": "C:\\Users\\csz00\\source\\repos\\Logger\\Logger\\dllmain.cpp",
-              "RelativeToolTip": "Logger\\dllmain.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Test.cpp",
+              "DocumentMoniker": "C:\\Users\\csz00\\Project\\Logger\\Logger\\TestLogger\\Test.cpp",
+              "RelativeDocumentMoniker": "TestLogger\\Test.cpp",
+              "ToolTip": "C:\\Users\\csz00\\Project\\Logger\\Logger\\TestLogger\\Test.cpp",
+              "RelativeToolTip": "TestLogger\\Test.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-08-18T08:44:26.976Z",
+              "WhenOpened": "2025-08-19T17:35:45.42Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Logger.cpp",
-              "DocumentMoniker": "C:\\Users\\csz00\\source\\repos\\Logger\\Logger\\Logger.cpp",
+              "DocumentMoniker": "C:\\Users\\csz00\\Project\\Logger\\Logger\\Logger\\Logger.cpp",
               "RelativeDocumentMoniker": "Logger\\Logger.cpp",
-              "ToolTip": "C:\\Users\\csz00\\source\\repos\\Logger\\Logger\\Logger.cpp",
+              "ToolTip": "C:\\Users\\csz00\\Project\\Logger\\Logger\\Logger\\Logger.cpp",
               "RelativeToolTip": "Logger\\Logger.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-08-18T08:44:26.5Z",
+              "WhenOpened": "2025-08-19T14:06:28.014Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Logger.h",
+              "DocumentMoniker": "C:\\Users\\csz00\\Project\\Logger\\Logger\\Logger\\Logger.h",
+              "RelativeDocumentMoniker": "Logger\\Logger.h",
+              "ToolTip": "C:\\Users\\csz00\\Project\\Logger\\Logger\\Logger\\Logger.h",
+              "RelativeToolTip": "Logger\\Logger.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-08-19T14:10:50.835Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -1,22 +1,35 @@
-﻿// 다음 ifdef 블록은 DLL에서 내보내는 작업을 더 간소화하는 매크로를 만드는
-// 표준 방법입니다. 이 DLL에 들어 있는 파일은 모두 명령줄에 정의된 LOGGER_EXPORTS 기호로
-// 컴파일됩니다. 이 DLL을 사용하는 프로젝트에서는 이 기호를 정의할 수 없습니다.
-// 이렇게 하면 소스 파일에 이 파일이 포함된 다른 모든 프로젝트에서는
-// LOGGER_API 함수를 DLL에서 가져오는 것으로 표시되는 반면, 이 DLL에서는
-// 이 매크로로 정의된 기호가 내보내지는 것으로 표시됩니다.
-#ifdef LOGGER_EXPORTS
-#define LOGGER_API __declspec(dllexport)
-#else
-#define LOGGER_API __declspec(dllimport)
-#endif
+#pragma once
 
-// 이 클래스는 dll에서 내보낸 것입니다.
-class LOGGER_API CLogger {
-public:
-	CLogger(void);
-	// TODO: 여기에 메서드를 추가합니다.
-};
+#include <string>
+#include <memory>           // shared memory
+#include <unordered_map>    // 
 
-extern LOGGER_API int nLogger;
+#define FMT_UNICODE 0
+#include <spdlog/spdlog.h>
 
-LOGGER_API int fnLogger(void);
+namespace MyLib 
+{
+    class Logger 
+    {
+    public:
+        static void Init(const std::string& name, const std::string& filepath, bool daily = false);
+        static void CreateModuleLogger(const std::string& moduleName, const std::string& filepath, bool daily = false);
+        static std::shared_ptr<spdlog::logger> GetLogger(const std::string& moduleName);
+        static void SetLevel(spdlog::level::level_enum level);
+
+        static void Trace(const std::string& msg);
+        static void Debug(const std::string& msg);
+        static void Info(const std::string& msg);
+        static void Warn(const std::string& msg);
+        static void Error(const std::string& msg);
+        static void Critical(const std::string& msg);
+
+        // json - nlohmann , ini - mini or simpleini
+        //static void InitFromJson(const std::string& configPath);
+        //static void InitFromIni(const std::string& configPath);
+
+    private:
+        static std::shared_ptr<class spdlog::logger> s_logger;
+        static std::unordered_map<std::string, std::shared_ptr<spdlog::logger>> s_moduleLoggers;
+    };
+}
