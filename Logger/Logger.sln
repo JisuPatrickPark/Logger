@@ -1,11 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36408.4 d17.14
+VisualStudioVersion = 17.14.36408.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Logger", "Logger\Logger.vcxproj", "{1FB88202-7399-4BBE-8CBD-7167EEC97D3C}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestLogger", "TestLogger\TestLogger.vcxproj", "{418754B7-CDDC-4602-AA0A-73B5440603B9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1FB88202-7399-4BBE-8CBD-7167EEC97D3C} = {1FB88202-7399-4BBE-8CBD-7167EEC97D3C}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

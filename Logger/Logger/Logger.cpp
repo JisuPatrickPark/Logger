@@ -7,23 +7,25 @@
 #include <spdlog/sinks/daily_file_sink.h>
 #include <spdlog/sinks/msvc_sink.h>
 
+using namespace std;
+
 namespace MyLib 
 {
-    std::shared_ptr<spdlog::logger> Logger::s_logger;
-    std::unordered_map<std::string, std::shared_ptr<spdlog::logger>> Logger::s_moduleLoggers;
+    shared_ptr<spdlog::logger> Logger::s_logger;
+    unordered_map<string, shared_ptr<spdlog::logger>> Logger::s_moduleLoggers;
 
-    static std::shared_ptr<spdlog::logger> createLogger(const std::string& name, const std::string& filepath, bool daily, spdlog::level::level_enum level) 
+    static shared_ptr<spdlog::logger> createLogger(const string& name, const string& filepath, bool daily, spdlog::level::level_enum level) 
     {
-        auto debug_sink = std::make_shared<spdlog::sinks::msvc_sink_mt>();
-        std::shared_ptr<spdlog::sinks::sink> file_sink;
+        auto debug_sink = make_shared<spdlog::sinks::msvc_sink_mt>();
+        shared_ptr<spdlog::sinks::sink> file_sink;
 
         if (daily)
-            file_sink = std::make_shared<spdlog::sinks::daily_file_sink_mt>(filepath, 0, 0);
+            file_sink = make_shared<spdlog::sinks::daily_file_sink_mt>(filepath, 0, 0);
         else
-            file_sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(filepath, true);
+            file_sink = make_shared<spdlog::sinks::basic_file_sink_mt>(filepath, true);
         
-        std::vector<spdlog::sink_ptr> sinks{ debug_sink, file_sink };
-        auto logger = std::make_shared<spdlog::logger>(name, sinks.begin(), sinks.end());
+        vector<spdlog::sink_ptr> sinks{ debug_sink, file_sink };
+        auto logger = make_shared<spdlog::logger>(name, sinks.begin(), sinks.end());
 
         logger->set_level(level);
         logger->flush_on(spdlog::level::info);
@@ -33,7 +35,7 @@ namespace MyLib
         return logger;
     }
 
-    void Logger::Init(const std::string& name, const std::string& filepath, bool daily) 
+    void Logger::Init(const string& name, const string& filepath, bool daily) 
     {
         try 
         {
@@ -41,11 +43,11 @@ namespace MyLib
         }
         catch (const spdlog::spdlog_ex& ex) 
         {
-            ::OutputDebugStringA(("Logger init failed: " + std::string(ex.what()) + "\n").c_str());
+            ::OutputDebugStringA(("Logger init failed: " + string(ex.what()) + "\n").c_str());
         }
     }
 
-    void Logger::CreateModuleLogger(const std::string& moduleName, const std::string& filepath, bool daily) 
+    void Logger::CreateModuleLogger(const string& moduleName, const string& filepath, bool daily) 
     {
         try 
         {
@@ -54,11 +56,11 @@ namespace MyLib
         }
         catch (const spdlog::spdlog_ex& ex) 
         {
-            ::OutputDebugStringA(("Module logger init failed: " + std::string(ex.what()) + "\n").c_str());
+            ::OutputDebugStringA(("Module logger init failed: " + string(ex.what()) + "\n").c_str());
         }
     }
 
-    std::shared_ptr<spdlog::logger> Logger::GetLogger(const std::string& moduleName) 
+    shared_ptr<spdlog::logger> Logger::GetLogger(const string& moduleName) 
     {
         auto it = s_moduleLoggers.find(moduleName);
         if (it != s_moduleLoggers.end())
@@ -77,10 +79,10 @@ namespace MyLib
         }
     }
 
-    void Logger::Trace(const std::string& msg) { if (s_logger) s_logger->trace(msg); }
-    void Logger::Debug(const std::string& msg) { if (s_logger) s_logger->debug(msg); }
-    void Logger::Info(const std::string& msg) { if (s_logger) s_logger->info(msg); }
-    void Logger::Warn(const std::string& msg) { if (s_logger) s_logger->warn(msg); }
-    void Logger::Error(const std::string& msg) { if (s_logger) s_logger->error(msg); }
-    void Logger::Critical(const std::string& msg) { if (s_logger) s_logger->critical(msg); }
+    void Logger::Trace(const string& msg) { if (s_logger) s_logger->trace(msg); }
+    void Logger::Debug(const string& msg) { if (s_logger) s_logger->debug(msg); }
+    void Logger::Info(const string& msg) { if (s_logger) s_logger->info(msg); }
+    void Logger::Warn(const string& msg) { if (s_logger) s_logger->warn(msg); }
+    void Logger::Error(const string& msg) { if (s_logger) s_logger->error(msg); }
+    void Logger::Critical(const string& msg) { if (s_logger) s_logger->critical(msg); }
 }
