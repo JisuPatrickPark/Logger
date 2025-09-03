@@ -25,6 +25,8 @@ x64/Debug/
 x64/Release/
 Debug/
 Release/
+packages/
+vcpkg_installed/
 *.exe
 *.dll
 *.lib
