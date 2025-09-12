@@ -6,9 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Logger", "Logger\Logger.vcxproj", "{1FB88202-7399-4BBE-8CBD-7167EEC97D3C}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestLogger", "TestLogger\TestLogger.vcxproj", "{418754B7-CDDC-4602-AA0A-73B5440603B9}"
-	ProjectSection(ProjectDependencies) = postProject
-		{1FB88202-7399-4BBE-8CBD-7167EEC97D3C} = {1FB88202-7399-4BBE-8CBD-7167EEC97D3C}
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest_Logger", "UnitTest_Logger\UnitTest_Logger.vcxproj", "{D15C8C9F-4BF4-4027-8AFB-9FB45BDCC0C9}"
 EndProject
