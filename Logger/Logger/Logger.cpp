@@ -1,6 +1,4 @@
 ﻿#include "pch.h"
-#include "Logger.h"
-#include <Windows.h>
 
 namespace MyLib
 {
@@ -39,7 +37,8 @@ namespace MyLib
         const std::string& strName,
         const std::string& strFilepath,
         bool bDaily,
-        spdlog::level::level_enum spdLevel)
+        spdlog::level::level_enum spdLevel,
+        spdlog::level::level_enum spdflushLevel)
     {
         size_t pos = strFilepath.find_last_of("/\\");
         if (pos != std::string::npos)
@@ -59,7 +58,7 @@ namespace MyLib
 
         auto logger = std::make_shared<spdlog::logger>(strName, sinks.begin(), sinks.end());
         logger->set_level(spdLevel);
-        logger->flush_on(spdlog::level::info);
+        logger->flush_on(spdflushLevel);
         logger->set_pattern("[%Y-%m-%d %H:%M:%S.%e] [T%t] [%^%l%$] [%n] %v");
 
         spdlog::register_logger(logger);
@@ -71,7 +70,7 @@ namespace MyLib
         std::lock_guard<std::mutex> lock(s_mutex);
         try
         {
-            s_logger = CreateLogger(strName, strFilepath, bDaily, spdlog::level::debug);
+            s_logger = CreateLogger(strName, strFilepath, bDaily, spdlog::level::debug, spdlog::level::debug);
         }
         catch (const spdlog::spdlog_ex& ex)
         {
@@ -86,12 +85,48 @@ namespace MyLib
         std::lock_guard<std::mutex> lock(s_mutex);
         try
         {
-            auto logger = CreateLogger(strModuleName, strFilepath, bDaily, spdlog::level::debug);
+            auto logger = CreateLogger(strModuleName, strFilepath, bDaily, spdlog::level::debug, spdlog::level::debug);
             s_ModuleLoggers[strModuleName] = logger;
         }
         catch (const spdlog::spdlog_ex& ex)
         {
             ::OutputDebugStringA(("Module logger init failed: " + std::string(ex.what()) + "\n").c_str());
+        }
+    }
+
+    void Logger::InitFromIni(const std::string& iniPath)
+    {
+        mINI::INIFile file(iniPath);
+        mINI::INIStructure ini;
+        if (!file.read(ini)) {
+            ::OutputDebugStringA(("Failed to read ini file: " + iniPath + "\n").c_str());
+            return;
+        }
+
+        // [default] 로거
+        if (ini.has("default")) {
+            auto& section = ini["default"];
+            std::string name = section.has("name") ? section["name"] : "Default";
+            std::string filepath = section.has("filepath") ? section["filepath"] : "logs/default.log";
+            bool daily = (section.has("daily") && section["daily"] == "true");
+            auto level = toLevel(section.has("level") ? section["level"] : "info");
+            auto flushLevel = toLevel(section.has("flush") ? section["flush"] : "info");
+
+            s_logger = CreateLogger(name, filepath, daily, level, flushLevel);
+        }
+
+        // [module.xxx] 로거
+        for (auto const& it : ini) {
+            if (it.first.find("module.") == 0) {
+                std::string moduleName = it.first.substr(strlen("module."));
+                auto& section = ini[it.first];
+                std::string filepath = section.has("filepath") ? section["filepath"] : ("logs/" + moduleName + ".log");
+                bool daily = (section.has("daily") && section["daily"] == "true");
+                auto level = toLevel(section.has("level") ? section["level"] : "info");
+                auto flushLevel = toLevel(section.has("flush") ? section["flush"] : "info");
+
+                s_ModuleLoggers[moduleName] = CreateLogger(moduleName, filepath, daily, level, flushLevel);
+            }
         }
     }
 

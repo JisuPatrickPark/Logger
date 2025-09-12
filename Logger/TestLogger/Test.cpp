@@ -1,7 +1,7 @@
-#include "Logger.h"
+
 #include <iostream>
 
-using namespace MyLib;
+#include "mini/ini.h"
 
 int main() 
 {

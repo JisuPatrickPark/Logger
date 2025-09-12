@@ -15,7 +15,7 @@ namespace MyLib {
     class Logger {
     public:
         // --------------------------
-        // 기본 Logger 초기화
+        // 기본Logger 초기화
         // --------------------------
         static void Init(const std::string& strName,
             const std::string& strFilepath,
@@ -27,6 +27,11 @@ namespace MyLib {
         static void CreateModuleLogger(const std::string& strModuleName,
             const std::string& strFilepath,
             bool bDaily = false);
+
+        // --------------------------
+        // Ini파일 기반 Logger 생성
+        // --------------------------
+        static void InitFromIni(const std::string& iniPath);
 
         // --------------------------
         // 모듈 Logger 가져오기
@@ -143,7 +148,8 @@ namespace MyLib {
         static std::shared_ptr<spdlog::logger> CreateLogger(const std::string& strName,
             const std::string& strFilepath,
             bool bDaily,
-            spdlog::level::level_enum spdLevel);
+            spdlog::level::level_enum spdLevel,
+            spdlog::level::level_enum spdflushLevel);
 
         static spdlog::level::level_enum toLevel(const std::string& strLevel);
 
